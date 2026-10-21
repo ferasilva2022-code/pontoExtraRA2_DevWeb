@@ -12,7 +12,7 @@ $retorno = [
 
 $nome_produto= $_POST['nome'];
 $preco = $_POST['preco'];
-$estoque = $_POST['estoque'];
+$estoque = !empty($_POST['estoque']) ? $_POST['estoque'] : 0;
 $ativo = $_POST['ativo'];
 
 if(empty($nome_produto) || empty($preco) ){
@@ -25,7 +25,7 @@ if(empty($nome_produto) || empty($preco) ){
     }else{
 
         $stmt = $conexao->prepare("INSERT INTO produto(nome,preco,estoque,ativo) VALUES (?,?,?,?)");
-        $stmt->bind_param(('ssii'),$nome_produto,$preco,$estoque,$ativo);
+        $stmt->bind_param(('sdii'),$nome_produto,$preco,$estoque,$ativo);
 
         $stmt->execute();
 
