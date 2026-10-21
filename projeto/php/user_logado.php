@@ -1,4 +1,12 @@
 <?php
+include_once('conexao.php');
+$retorno=[
+    'status' =>'',
+    'mensagem' => '',
+    'data' => []
+];
+
+
 session_start();
 if(isset($_SESSION['usuario'])){
     $retorno = [
