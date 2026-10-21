@@ -9,13 +9,46 @@ $retorno = [
     'mensagem' => '',
     'data' => []
 ];
-header('Content-Type: application/json; charset=utf-8');
 
-$nome_produto= $_POST['nome_produto'];
+$nome_produto= $_POST['nome'];
 $preco = $_POST['preco'];
 $estoque = $_POST['estoque'];
-$ativo = isset($_POST['ativo']) ? 1 : 0;
+$ativo = $_POST['ativo'];
 
-// if(isset($nome_produto))
+if(empty($nome_produto) || empty($preco) ){
+    $retorno =[
+            'status' => 'nok',
+            'mensagem' => 'Falha ao cadastrar novo produto',
+            'data' => []
+        ];
+    
+    }else{
+
+        $stmt = $conexao->prepare("INSERT INTO produto(nome,preco,estoque,ativo) VALUES (?,?,?,?)");
+        $stmt->bind_param(('ssii'),$nome_produto,$preco,$estoque,$ativo);
+
+        $stmt->execute();
+
+
+        if($stmt->affected_rows > 0){
+                $retorno =[
+                    'status' => 'ok',
+                    'mensagem' => 'Produto cadastrado com sucesso!',
+                    'data' => []
+                ];
+            }else{
+                $retorno =[
+                    'status' => 'nok',
+                    'mensagem' => 'Falha ao cadastrar novo produto',
+                    'data' => []
+                ];
+            }
+
+        $stmt->close();
+}
+$conexao->close();
+
+header('Content-Type: application/json; charset=utf-8');
 echo json_encode($retorno);
+
 ?>
