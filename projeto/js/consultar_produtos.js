@@ -39,3 +39,7 @@ async function consultar(){
 document.getElementById("btnVoltar").addEventListener('click', () =>{
     window.location.href = "../home/lista_produtos.html";
 });
+
+document.getElementById("btnEditar").addEventListener('click', () =>{
+    window.location.href = "../home/alterar_produtos.html";
+});
