@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Produtos</title>
+    <style>
+        #consulta{
+            display: none;
+        }
+
+        #btnVoltar {
+            display:none;
+        }
+        #btnConsultar{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <form action="produto.listar.php">
+        <button type="button" id="btnListar">Listar Produtos Disponíveis</button>
+    </form>
+    <p id="mensagem"></p>
+    <table  id="consulta" border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="tabelaProdutos"></tbody>
+    </table>
+    <br>
+    <button type="button" id="btnConsultar">Consultar Produtos</button>
+    <button type="button" id="btnVoltar">Voltar</button>
+    <script src="../js/listar_produtos.js"></script>
+</body>
+</html>

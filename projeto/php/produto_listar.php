@@ -11,21 +11,25 @@ $retorno =[
 ];
 
 // SELECT id, nome, preco, estoque FROM produto WHERE ativo = 1 ORDER BY preco ASC
-$stmt = $conexao->prepare("SELECT id,nome,preco,estoque FROM produto WHERE ativo=1 ORDER BY preco ASC");
+$stmt = $conexao->prepare("SELECT id,nome,preco FROM produto WHERE ativo=1 ORDER BY preco ASC");
 $stmt->execute();
 $resultado = $stmt->get_result();
 
+$tabela = [];
+while($linha = $resultado->fetch_assoc()){
+    $tabela[] = $linha;
+}
 
-if($stmt->affected_rows > 0){
+if($resultado->num_rows > 0){
         $retorno =[
             'status' => 'ok',
-            'mensagem' => 'Produtos listados com sucesso!',
-            'data' => []
+            'mensagem' => 'Produtos disponíveis:',
+            'data' => $tabela
         ];
     }else{
         $retorno =[
             'status' => 'nok',
-            'mensagem' => 'Falha ao listar produto',
+            'mensagem' => 'Não ha produtos disponíveis',
             'data' => []
         ];
     }

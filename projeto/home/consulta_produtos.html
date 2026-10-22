@@ -4,11 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultar Produtos</title>
+    
 </head>
 <body>
-    <form action="produto.listar.php">
-        <button type="button" id="btnConsultar">Consultar Produtos Disponíveis</button>
-    </form>
-    <script scr="../js/consulta_produtos.js"></script>
+    
+    <p id="mensagem"></p>
+    <table  id="consulta" border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Estoque</th>
+                <th>Situação</th>
+            </tr>
+        </thead>
+        <tbody id="tabelaProdutos"></tbody>
+    </table>
+    <button type="button" id="btnVoltar">Voltar</button>
+    <script src="../js/consultar_produtos.js"></script>
 </body>
 </html>
