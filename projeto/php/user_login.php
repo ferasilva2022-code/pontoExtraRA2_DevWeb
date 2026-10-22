@@ -21,6 +21,7 @@ if($resposta->num_rows > 0){
 
     session_start();
     $_SESSION['usuario'] = $tabela_usuario;
+    $_SESSION['usuario_id'] = $tabela_usuario[0]['id'];
 
     $retorno =[
         'status' => 'ok',
