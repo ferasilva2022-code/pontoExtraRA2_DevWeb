@@ -13,3 +13,7 @@ async function validaSessao() {
         window.location.href = "../login/";
     }
 }
+
+document.getElementById('btnListar').addEventListener('click', () => {
+    window.location.href = "../home/lista_produtos.html";
+});
