@@ -43,3 +43,7 @@ document.getElementById("btnVoltar").addEventListener('click', () =>{
 document.getElementById("btnEditar").addEventListener('click', () =>{
     window.location.href = "../home/alterar_produtos.html";
 });
+
+document.getElementById("btnRemover").addEventListener('click', () =>{
+    window.location.href = "../home/excluir_produtos.html";
+});
